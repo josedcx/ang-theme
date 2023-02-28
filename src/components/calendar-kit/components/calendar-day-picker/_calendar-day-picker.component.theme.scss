@@ -1,0 +1,11 @@
+
+
+@use '../../../../styles/theming' as *;
+
+@mixin nb-calendar-day-picker-theme {
+  nb-calendar-day-picker nb-calendar-week-numbers {
+    $border: nb-theme(calendar-weeknumber-divider-width) solid nb-theme(calendar-weeknumber-divider-color);
+    @include nb-ltr(border-right, $border);
+    @include nb-rtl(border-left, $border);
+  }
+}

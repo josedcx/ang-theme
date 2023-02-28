@@ -1,0 +1,18 @@
+@use '@angular/cdk/overlay-prebuilt';
+@use '../../../styles/theming' as *;
+
+@mixin nb-overlay-theme {
+  .overlay-backdrop {
+    background: nb-theme(overlay-backdrop-background-color);
+  }
+
+  .cdk-overlay-container {
+    z-index: 1040;
+  }
+}
+
+.nb-global-scrollblock {
+  position: static;
+  width: auto;
+  overflow: hidden;
+}

@@ -1,0 +1,20 @@
+
+
+@use '../../../../styles/theming' as *;
+
+@mixin nb-calendar-picker-theme() {
+  nb-calendar-picker {
+    display: block;
+    padding-top: nb-theme(calendar-picker-padding-top);
+    padding-bottom: nb-theme(calendar-picker-padding-bottom);
+
+    @include nb-ltr() {
+      padding-right: nb-theme(calendar-picker-padding-end);
+      padding-left: nb-theme(calendar-picker-padding-start);
+    }
+    @include nb-rtl() {
+      padding-right: nb-theme(calendar-picker-padding-start);
+      padding-left: nb-theme(calendar-picker-padding-end);
+    }
+  }
+}

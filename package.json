@@ -1,0 +1,94 @@
+{
+  "name": "@josedcx/ang-theme",
+  "version": "1.0.0",
+  "description": "@josedcx/ang-theme",
+  "author": "josedcx",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/josedcx/ang-theme.git"
+  },
+  "bugs": {
+    "url": "https://github.com/josedcx/ang-theme/issues"
+  },
+  "homepage": "https://github.com/josedcx/ang-theme#readme",
+  "keywords": [
+    "angular",
+    "typescript",
+    "ng2-admin",
+    "ngx-admin",
+    "theme"
+  ],
+  "peerDependencies": {
+    "@angular/animations": "^13.0.0",
+    "@angular/common": "^13.0.0",
+    "@angular/core": "^13.0.0",
+    "@angular/router": "^13.0.0",
+    "@angular/cdk": "^13.0.0",
+    "rxjs": "^6.5.3 || ^7.4.0"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "sideEffects": false,
+  "exports": {
+    "./src/styles/core/mixins": {
+      "sass": "./src/styles/core/_mixins.scss"
+    },
+    "./src/styles/core/variants": {
+      "sass": "./src/styles/core/_variants.scss"
+    },
+    "./src/styles/global/typography/typography": {
+      "sass": "./src/styles/global/typography/_typography.scss"
+    },
+    "./src/styles/global/breakpoints": {
+      "sass": "./src/styles/global/_breakpoints.scss"
+    },
+    "./src/styles/prebuilt/corporate.css": {
+      "style": "./src/styles/prebuilt/corporate.css"
+    },
+    "./src/styles/prebuilt/cosmic.css": {
+      "style": "./src/styles/prebuilt/cosmic.css"
+    },
+    "./src/styles/prebuilt/dark.css": {
+      "style": "./src/styles/prebuilt/dark.css"
+    },
+    "./src/styles/prebuilt/default.css": {
+      "style": "./src/styles/prebuilt/default.css"
+    },
+    "./src/styles/themes/corporate": {
+      "sass": "./src/styles/themes/_corporate.scss"
+    },
+    "./src/styles/themes/cosmic": {
+      "sass": "./src/styles/themes/_cosmic.scss"
+    },
+    "./src/styles/themes/dark": {
+      "sass": "./src/styles/themes/_dark.scss"
+    },
+    "./src/styles/themes/default": {
+      "sass": "./src/styles/themes/_default.scss"
+    },
+    "./src/styles/themes/mapping": {
+      "sass": "./src/styles/themes/_mapping.scss"
+    },
+    "./src/styles/all": {
+      "sass": "./src/styles/_all.scss"
+    },
+    "./src/styles/globals": {
+      "sass": "./src/styles/_globals.scss"
+    },
+    "./src/styles/themes": {
+      "sass": "./src/styles/_themes.scss"
+    },
+    "./src/styles/theming": {
+      "sass": "./src/styles/_theming.scss"
+    },
+    "./package.json": {
+      "default": "./package.json"
+    },
+    ".": {
+      "types": "./ang-theme.d.ts"
+    }
+  },
+  "typings": "ang-theme.d.ts"
+}

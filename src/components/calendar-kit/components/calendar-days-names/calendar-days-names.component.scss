@@ -1,0 +1,12 @@
+
+
+:host {
+  display: flex;
+  justify-content: space-between;
+
+  .day {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

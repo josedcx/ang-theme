@@ -1,0 +1,10 @@
+
+
+@use 'normalize';
+@use 'tables/smart-table.theme' as smart-table;
+@use 'typography/typography';
+
+@mixin nb-theme-overrides() {
+  @include typography.nb-typography();
+  @include smart-table.nb-tables-smart-table-theme();
+}

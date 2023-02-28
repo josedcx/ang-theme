@@ -1,0 +1,44 @@
+import { ChangeDetectorRef, EventEmitter, ElementRef, Renderer2 } from '@angular/core';
+import { NbStatusService } from '../../services/status.service';
+import { NbBooleanInput } from '../helpers';
+import { NbComponentOrCustomStatus } from '../component-status';
+import * as i0 from "@angular/core";
+
+export declare class NbRadioComponent {
+    protected cd: ChangeDetectorRef;
+    protected renderer: Renderer2;
+    protected statusService: NbStatusService;
+    get name(): string;
+    set name(value: string);
+    private _name;
+    get checked(): boolean;
+    set checked(value: boolean);
+    private _checked;
+    static ngAcceptInputType_checked: NbBooleanInput;
+    get value(): any;
+    set value(value: any);
+    private _value;
+    get disabled(): boolean;
+    set disabled(disabled: boolean);
+    private _disabled;
+    static ngAcceptInputType_disabled: NbBooleanInput;
+    status: NbComponentOrCustomStatus;
+    valueChange: EventEmitter<any>;
+    blur: EventEmitter<void>;
+    input: ElementRef<HTMLInputElement>;
+    constructor(cd: ChangeDetectorRef, renderer: Renderer2, statusService: NbStatusService);
+    get isPrimary(): boolean;
+    get isSuccess(): boolean;
+    get isWarning(): boolean;
+    get isDanger(): boolean;
+    get isInfo(): boolean;
+    get isBasic(): boolean;
+    get isControl(): boolean;
+    get additionalClasses(): string[];
+    onChange(event: Event): void;
+    onClick(event: Event): void;
+    _markForCheck(): void;
+    _setName(name: string): void;
+    static ɵfac: i0.ɵɵFactoryDeclaration<NbRadioComponent, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<NbRadioComponent, "nb-radio", never, { "name": "name"; "checked": "checked"; "value": "value"; "disabled": "disabled"; "status": "status"; }, { "valueChange": "valueChange"; "blur": "blur"; }, never, ["*"]>;
+}

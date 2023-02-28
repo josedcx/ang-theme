@@ -1,0 +1,207 @@
+
+
+@use 'sass:list';
+@use 'theming/get-value';
+
+@mixin nb-scrollbars($fg, $bg, $size, $border-radius: calc(#{$size} * 0.5)) {
+  &::-webkit-scrollbar {
+    width: $size;
+    height: $size;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $fg;
+    cursor: pointer;
+    border-radius: $border-radius;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: $bg;
+  }
+
+  &::-webkit-scrollbar-corner {
+    background: $bg;
+  }
+
+  // TODO: remove
+  // For Internet Explorer
+  scrollbar-face-color: $fg;
+  scrollbar-track-color: $bg;
+}
+
+@mixin nb-headings($from: 1, $to: 6) {
+  @for $i from $from through $to {
+    h#{$i} {
+      margin: 0;
+    }
+  }
+}
+
+@mixin nb-outline($outline-width, $outline-color, $inset-shadow-length: 0) {
+  $outset-shadow: 0 0 0 $outline-width $outline-color;
+  box-shadow: $outset-shadow;
+
+  @if ($inset-shadow-length != 0) {
+    &:not(:hover):not(:active) {
+      $inset-shadow: inset $inset-shadow-length $outline-color;
+      box-shadow: $outset-shadow, $inset-shadow;
+    }
+  }
+}
+
+@mixin hover-focus-active {
+  &:focus,
+  &:active,
+  &:hover {
+    @content;
+  }
+}
+
+@mixin center-horizontal-absolute {
+  position: absolute;
+  transform: translate(-50%, 0);
+  left: 50%;
+}
+
+@mixin install-thumb() {
+  $thumb-selectors: ('::-webkit-slider-thumb' '::-moz-range-thumb' '::-ms-thumb');
+
+  @each $selector in $thumb-selectors {
+    &#{$selector} {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      @content;
+    }
+  }
+}
+
+@mixin install-track() {
+  $thumb-selectors: ('::-webkit-slider-runnable-track' '::-moz-range-track' '::-ms-track');
+
+  @each $selector in $thumb-selectors {
+    &#{$selector} {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      @content;
+    }
+  }
+}
+
+@mixin install-placeholder($color, $font-size, $opacity: 1) {
+  $placeholder-selectors: (
+    '::-webkit-input-placeholder' '::-moz-placeholder' ':-moz-placeholder' ':-ms-input-placeholder'
+  );
+
+  &::placeholder {
+    @include placeholder($color, $font-size, $opacity);
+  }
+
+  @each $selector in $placeholder-selectors {
+    &#{$selector} {
+      @include placeholder($color, $font-size, $opacity);
+    }
+
+    &:focus#{$selector} {
+      @include placeholder-focus();
+    }
+  }
+}
+
+@mixin placeholder($color, $font-size, $opacity) {
+  color: $color;
+  font-size: $font-size;
+  opacity: $opacity;
+  transition: opacity 0.3s ease;
+  text-overflow: ellipsis;
+}
+
+@mixin placeholder-focus() {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+@mixin nb-component-animation($properties...) {
+  transition-duration: 0.15s;
+  transition-property: $properties;
+  transition-timing-function: ease-in;
+}
+
+@mixin animation($animate...) {
+  $max: list.length($animate);
+  $animations: '';
+
+  @for $i from 1 through $max {
+    $animations: #{$animations + list.nth($animate, $i)};
+
+    @if $i < $max {
+      $animations: #{$animations + ', '};
+    }
+  }
+  -webkit-animation: $animations;
+  -moz-animation: $animations;
+  -o-animation: $animations;
+  animation: $animations;
+}
+
+@mixin keyframes($animationName) {
+  @-webkit-keyframes #{$animationName} {
+    @content;
+  }
+  @-moz-keyframes #{$animationName} {
+    @content;
+  }
+  @-o-keyframes #{$animationName} {
+    @content;
+  }
+  @keyframes #{$animationName} {
+    @content;
+  }
+}
+
+/**
+ * This mixin generates keyfames.
+ * Because of all keyframes can't be scoped,
+ * we need to puts unique name in each btn-pulse call.
+ */
+@mixin btn-pulse($name, $color) {
+  &.btn-pulse {
+    @include animation(btn-#{$name}-pulse 1.5s infinite);
+  }
+
+  @include keyframes(btn-#{$name}-pulse) {
+    0% {
+      box-shadow: none;
+      opacity: get-value.nb-theme(btn-disabled-opacity);
+    }
+    50% {
+      box-shadow: 0 0 1rem 0 $color;
+      opacity: 0.8;
+    }
+    100% {
+      box-shadow: none;
+      opacity: get-value.nb-theme(btn-disabled-opacity);
+    }
+  }
+}
+
+@mixin _prepend-with-selector($selector, $prop: null, $value: null) {
+  #{$selector} & {
+    @if $prop != null {
+      #{$prop}: $value;
+    }
+
+    @content;
+  }
+}
+
+@mixin nb-ltr($prop: null, $value: null) {
+  @include _prepend-with-selector('[dir=ltr]', $prop, $value) {
+    @content;
+  }
+}
+
+@mixin nb-rtl($prop: null, $value: null) {
+  @include _prepend-with-selector('[dir=rtl]', $prop, $value) {
+    @content;
+  }
+}

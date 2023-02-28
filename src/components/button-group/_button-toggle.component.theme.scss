@@ -1,0 +1,8 @@
+
+
+@mixin nb-buttons-toggle-theme() {
+  [nbButtonToggle] {
+    @extend [nbButton];
+  }
+}
+

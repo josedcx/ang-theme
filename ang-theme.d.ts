@@ -1,5 +1,5 @@
 /**
  * Generated bundle index. Do not edit.
  */
-/// <amd-module name="@ang-theme" />
-export * from './public_api';
+/// <amd-module name="@josedcx/ang-theme" />
+export * from "./public_api";

@@ -30,6 +30,7 @@
   "dependencies": {
     "tslib": "^2.3.0"
   },
+  "schematics": "./src/schematics/collection.json",
   "sideEffects": false,
   "exports": {
     "./src/styles/core/mixins": {
